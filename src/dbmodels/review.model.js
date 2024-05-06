@@ -5,18 +5,18 @@ const reviewSchema = mongoose.Schema({
     {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
-        required: true
+        // required: true
     },
     product:
     {
         type:mongoose.Schema.Types.ObjectId,
         ref: "products",
-        required: true
+        // required: true
     },
     review:
     {
         type:String,
-        required: true
+        // required: true
     },
     createdAt:
     {

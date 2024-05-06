@@ -2,7 +2,7 @@ const userService = require('../services/user.service')
 
 const getUserProfile = async(req,res)=>
 {
-    console.log("rvkwjbvwkljvbwljhvb")
+    // console.log("rvkwjbvwkljvbwljhvb")
     try
     {
         const jwt = req.headers.authorization?.split(" ")[1] //.split(" ") function space dekhlei sekahane break kore array banay
@@ -20,13 +20,13 @@ const getUserProfile = async(req,res)=>
         return res.status(500).send({error:error.message})
     }
 }
-module.exports = getUserProfile
 
-const getallusers = async(req,res)=>
+
+const getAllUsers = async(req,res)=>
 {
     try
     {
-        console.log("wlkjhvbwhvowvwjc")
+        // console.log("wlkjhvbwhvowvwjc")
         const users = await userService.getAllUsers()
         return res.status(200).send(users)
     }
@@ -35,4 +35,4 @@ const getallusers = async(req,res)=>
         return res.status(500).send({error:error.message})
     }
 }
-module.exports = getallusers
+module.exports ={ getAllUsers, getUserProfile}

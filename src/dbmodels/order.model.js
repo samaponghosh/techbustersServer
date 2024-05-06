@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema({
     {
         type: Date,
         default: Date.now(),
-        required:true
+        // required:true
     },
     deliveryDate:
     {
@@ -50,20 +50,20 @@ const orderSchema = new mongoose.Schema({
     totalPrice:
     {
         type: Number,
-        required:true,
+        // required:true,
         default: 0 
     },
     totalItem:
     {
         type: Number,
-        required: true
+        // required: true
     },
     orderStatus:
     {
         type: String,
-        required: true
+        // required: true
     }
 })
 
 const Order = mongoose.model("orders",orderSchema)
-model.exports = Order
+module.exports = Order

@@ -5,19 +5,19 @@ const ratingSchema = mongoose.Schema({
     {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
-        required: true
+        // required: true
     },
     product:
     {
         type:mongoose.Schema.Types.ObjectId,
         ref: "products",
-        required: true
+        // required: true
     },
     ratings:
     {
         type:Number,
         default: 0,
-        required: true
+        // required: true
     },
     createdAt:
     {

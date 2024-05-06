@@ -6,7 +6,7 @@ async function createCart(user)
 {
     try
     {
-        const cart = new Cart({user})
+        const cart = new Cart({ user })
         const createdcart = cart.save()
         return createdcart
     }
@@ -15,7 +15,7 @@ async function createCart(user)
         throw new Error(error.message)
     }
 }
-module.exports = createCart
+
 
 async function findUserCart(userId) 
 {
@@ -40,13 +40,13 @@ async function findUserCart(userId)
     // const updatedCart = await cart.save();
     return cart;
 }
-module.exports = findUserCart
+
 
 async function addCartItem(userId, req) 
 {
     const cart = await Cart.findOne({ user: userId });
     const product = await Product.findById(req.productId);
-  
+
     const isPresent = await CartItem.findOne({ cart: cart._id, product: product._id, userId });
     
     if (!isPresent) 
@@ -66,4 +66,4 @@ async function addCartItem(userId, req)
 
     return 'Item added to cart';
 }
-module.exports = addCartItem
+module.exports = {addCartItem, createCart, findUserCart}

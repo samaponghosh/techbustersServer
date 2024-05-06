@@ -5,36 +5,48 @@ const cartService = require('../services/cart.service')
 
 const register = async(req,res)=>
 {
-    const user = await userService.createUser(req.body)
-    const jwt = jwtProvider.generateToken(user._id)
-
-    await cartService.createCart(user)
+    try
+    {
+        const user = await userService.createUser(req.body)
+        const jwt = jwtProvider.generateToken(user._id)
     
-    return response.status(200).send({jwt,message:"registered successful"})
+        await cartService.createCart(user)
+        
+        return res.status(200).send({jwt,message:"registered successful"})
+    }
+    catch(error)
+    {
+        return res.status(500).send({error:error.message})
+    }
 }
-module.exports = register
+
 
 
 const login = async(req,res)=>
 {
-    console.log("jhvjjgvhjgcv")
     const {password,mobile} = req.body
-
-    const user = await userService.findUserbyMobile(mobile)
-    if (!user)
+    try
     {
-        return res.send({message:"No user found with this mobile",mobile})
-    }
-
-    const checkPassword = await bcrypt.compare(password,user.password)
-    if(!checkPassword)
-    {
-        return res.status(401).send({message:"invalid password"})
-    }
-    else
-    {
+        // console.log("jhvjjgvhjgcv")
+        const user = await userService.findUserbyMobile(mobile)
+        if (!user)
+        {
+            return res.send({message:"No user found with this mobile",mobile})
+        }
+    
+        const checkPassword = await bcrypt.compare(password,user.password)
+        if(!checkPassword)
+        {
+            return res.status(401).send({message:"invalid password"})
+        }
+        
         const jwt = jwtProvider.generateToken(user._id)
-        return res.status(200).send({message:"login successful",jwt})
+        return res.status(200).send({jwt,message:"login successful"})
+        
+    }
+    catch(error)
+    {
+        return res.status(500).send({error:error.message})
     }
 }
-module.exports = login
+module.exports = {login, register}
