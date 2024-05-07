@@ -4,7 +4,7 @@ const categorySchema = mongoose.Schema(
     {
         name:{
             type: String,
-            // require: true
+            require: true
         },
         parentCategory:
         {
@@ -14,7 +14,7 @@ const categorySchema = mongoose.Schema(
         level:
         {
             type: Number,
-            // required: true
+            required: true
         }
     }
 )

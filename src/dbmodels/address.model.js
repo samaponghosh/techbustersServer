@@ -4,37 +4,37 @@ const AddressSchema = new mongoose.Schema ({
     firstName:
     {
         type:String,
-        // required:true
+        required:true
     },
     lastName:
     {
         type:String,
-        // required:true
+        required:true
     },
     mobile:
     {
         type:String,
-        // required:true
+        required:true
     },
     streetAddress: 
     {
         type:String,
-        // required:true
+        required:true
     },
     city:
     {
         type:String,
-        // required:true
+        required:true
     },
     state:
     {
         type:String,
-        // required:true
+        required:true
     },
     pincode:
     {
         type:Number,
-        // required:true
+        required:true
     },
     user:
     {
